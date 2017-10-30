@@ -14,9 +14,10 @@ Kirigami.ApplicationWindow {
     Connections {
         target: MycroftDbusAdapterInterface
         onSendShowMycroft: {
+            window.hide();
+            window.showMaximized();
             window.raise();
             window.requestActivate();
-            window.showMaximized();
             //window.active = "true"
             //var testt = console.log(window.showMaximized())
             mainPageComponent.innerPageComp.testDbus(window.toString());
