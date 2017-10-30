@@ -15,7 +15,8 @@ Kirigami.ApplicationWindow {
         target: MycroftDbusAdapterInterface
         onSendShowMycroft: {
             console.log("senttorootbydbus");
-            window.show();
+            mainPageComponent.innerPageComp.testDbus();
+            window.showMaximized();
         }
     }
 
@@ -89,8 +90,14 @@ Kirigami.ApplicationWindow {
                                             }
                                         }
 
-           Component{
+              Kirigami.Page{
                id: mainPageComponent
-               MainPage{}
+               title: "Home"
+               property alias innerPageComp: mainPageSubComp
+
+               MainPage{
+                id: mainPageSubComp
+                anchors.fill: parent
+               }
            }
 }

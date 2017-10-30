@@ -17,6 +17,13 @@ Kirigami.ScrollablePage {
    property var dataContent
    property alias cbwidth: pageRoot.width
 
+   function testDbus(){
+       convoLmodel.append({
+           "itemType": "NonVisual",
+           "InputQuery": "Got Signal On Dbus"
+       })
+   }
+
    function playwaitanim(recoginit){
        switch(recoginit){
            case "mycroft.skill.handler.start":
@@ -170,12 +177,12 @@ Kirigami.ScrollablePage {
                     height: 60
                     width: 60
 
-//                     AnimatedImage{
-//                     id: waitaniminner
-//                     anchors.fill: parent
-//                     source: "images/anim.gif"
-//                     z: 99999
-//                     }
+//                    AnimatedImage{
+//                    id: waitaniminner
+//                    anchors.fill: parent
+//                    source: "images/anim.gif"
+//                    z: 99999
+//                    }
                 }
 
 //                Image {
