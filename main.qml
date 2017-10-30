@@ -11,16 +11,24 @@ Kirigami.ApplicationWindow {
     visible: true
     pageStack.initialPage: mainPageComponent
 
+    onActiveChanged: {
+        mainPageComponent.innerPageComp.testDbus(window.toString());
+    }
+
+    onWindowStateChanged: {
+        mainPageComponent.innerPageComp.testDbus("statechanged");
+    }
+
     Connections {
         target: MycroftDbusAdapterInterface
         onSendShowMycroft: {
-            window.hide();
-            window.show();
+            window.requestActivate();
+            //window.requestActivate();
+            //window.show();
             //window.raise();
             //window.requestActivate();
             //window.active = "true"
             //var testt = console.log(window.showMaximized())
-            mainPageComponent.innerPageComp.testDbus(window.toString());
         }
     }
 
