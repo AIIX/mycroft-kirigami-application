@@ -173,7 +173,7 @@ Kirigami.ScrollablePage {
                     AnimatedImage{
                     id: waitaniminner
                     anchors.fill: parent
-                    source: "images/waitanim.gif"
+                    source: "images/anim.gif"
                     z: 99999
                     }
                 }

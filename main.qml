@@ -11,6 +11,14 @@ Kirigami.ApplicationWindow {
     visible: true
     pageStack.initialPage: mainPageComponent
 
+    Connections {
+        target: MycroftDbusAdapterInterface
+        onSendShowMycroft: {
+            console.log("senttorootbydbus");
+            window.show();
+        }
+    }
+
     header: Kirigami.ApplicationHeader {}
 
            globalDrawer: Kirigami.GlobalDrawer {

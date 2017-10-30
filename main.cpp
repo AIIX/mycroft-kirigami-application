@@ -1,6 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
+#include "mycroftinterface_dbus.h"
+#include <QtDBus>
+#include <QtQml>
 
 int main(int argc, char *argv[])
 {
@@ -8,6 +11,8 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+    MycroftDbusAdapterInterface MycroftDbusAdapterInterface(&app);
+    engine.rootContext()->setContextProperty("MycroftDbusAdapterInterface", &MycroftDbusAdapterInterface);
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 
     return app.exec();

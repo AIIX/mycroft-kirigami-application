@@ -1,8 +1,9 @@
-QT += qml quick widgets quickcontrols2
+QT += qml quick widgets quickcontrols2 dbus
 
 CONFIG += c++11
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    mycroftinterface_dbus.cpp
 
 RESOURCES += qml.qrc
 
@@ -13,3 +14,6 @@ QML_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+HEADERS += \
+    mycroftinterface_dbus.h
