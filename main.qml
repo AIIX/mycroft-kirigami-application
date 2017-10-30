@@ -15,7 +15,7 @@ Kirigami.ApplicationWindow {
         target: MycroftDbusAdapterInterface
         onSendShowMycroft: {
             window.hide();
-            //window.showMaximized();
+            window.show();
             //window.raise();
             //window.requestActivate();
             //window.active = "true"
