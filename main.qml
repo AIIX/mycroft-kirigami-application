@@ -15,11 +15,11 @@ Kirigami.ApplicationWindow {
         target: MycroftDbusAdapterInterface
         onSendShowMycroft: {
             window.raise();
-            mainPageComponent.innerPageComp.testDbus();
             window.requestActivate();
             window.showMaximized();
-            window.active = "true"
-            console.log(window.active);
+            //window.active = "true"
+            //var testt = console.log(window.showMaximized())
+            mainPageComponent.innerPageComp.testDbus(window.toString());
         }
     }
 

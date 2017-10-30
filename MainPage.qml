@@ -17,10 +17,10 @@ Kirigami.ScrollablePage {
    property var dataContent
    property alias cbwidth: pageRoot.width
 
-   function testDbus(){
+   function testDbus(getState){
        convoLmodel.append({
            "itemType": "NonVisual",
-           "InputQuery": "Got Signal On Dbus"
+           "InputQuery": getState
        })
    }
 
