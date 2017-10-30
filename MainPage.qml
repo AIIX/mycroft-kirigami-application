@@ -170,12 +170,12 @@ Kirigami.ScrollablePage {
                     height: 60
                     width: 60
 
-                    AnimatedImage{
-                    id: waitaniminner
-                    anchors.fill: parent
-                    source: "images/anim.gif"
-                    z: 99999
-                    }
+//                     AnimatedImage{
+//                     id: waitaniminner
+//                     anchors.fill: parent
+//                     source: "images/anim.gif"
+//                     z: 99999
+//                     }
                 }
 
 //                Image {
