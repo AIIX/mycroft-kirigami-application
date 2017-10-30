@@ -14,9 +14,8 @@ Kirigami.ApplicationWindow {
     Connections {
         target: MycroftDbusAdapterInterface
         onSendShowMycroft: {
-            console.log("senttorootbydbus");
-            mainPageComponent.innerPageComp.testDbus();
-            window.showMaximized();
+            window.raise();
+            window.requestActivate();
         }
     }
 

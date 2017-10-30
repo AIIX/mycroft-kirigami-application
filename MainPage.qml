@@ -224,9 +224,9 @@ Kirigami.ScrollablePage {
                     //height: 60
                     anchors.bottom: parent.bottom
                     anchors.left: parent.left
-                    anchors.leftMargin: 60
+                    anchors.leftMargin: 70
                     anchors.right: parent.right
-                    anchors.rightMargin: 60
+                    anchors.rightMargin: 70
                     placeholderText: qsTr("Enter Query or Say 'Hey Mycroft'")
                     onAccepted: {
                         var socketmessage = {};
