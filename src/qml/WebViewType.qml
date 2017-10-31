@@ -17,22 +17,22 @@ Column {
                         id: messageRect
                         width: cbwidth
                         radius: 2
-                        height: newikiFlick.height
+                        height: newwvFlick.height
                         color: Qt.lighter(Kirigami.Theme.backgroundColor, 1.2)
 
                         Flickable {
-                            id: newikiFlick
+                            id: newwvFlick
                             width: messageRect.width
-                            height: 250
+                            height: wview.experimental.page.height
 
                             WebView {
-                                id: wikiview
+                                id: wview
                                 anchors.fill: parent
                                 url: "file:///" + model.InputQuery
                                 experimental.userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3"
 
                                 onLoadingChanged: {
-                                console.log(wikiview.url)
+                                console.log(wview.url)
                                 }
                                     }
                                         }
