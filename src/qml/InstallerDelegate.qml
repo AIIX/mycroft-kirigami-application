@@ -8,6 +8,10 @@ Kirigami.SwipeListItem {
                 Layout.fillWidth: true
                 height: Kirigami.Units.gridUnit * 3
 
+                function exec(msmparam) {
+                    var bscrpt = "bash /home/$USER/mycroft-core/msm/msm"
+                    return launchinstaller.msmapp("x-terminal-emulator --hold -e" + " " + bscrpt + " install " + model.url)
+                }
 
 //                function getSkillInfoLocal() {
 //                var customFold = '/opt/mycroft/skills/'
@@ -23,10 +27,12 @@ Kirigami.SwipeListItem {
 //                    }
 //                }
 
-                function exec(msmparam) {
-                    var bscrpt = innerset.msmloc
-                    return launchinstaller.msmapp("x-terminal-emulator --hold -e" + " " + bscrpt + " install " + model.url)
-                }
+                actions: [
+                        Kirigami.Action {
+                            iconName: "document-decrypt"
+                            onTriggered: exec()
+                        }
+                ]
 
                 Component.onCompleted: {
                     //getSkillInfoLocal()

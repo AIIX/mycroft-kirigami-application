@@ -5,13 +5,15 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import Qt.WebSockets 1.0
 import org.kde.kirigami 2.1 as Kirigami
-
+import MsmInstaller 1.0
 
 Kirigami.ScrollablePage {
     id: skilltipRoot
     title: "Install New Skills"
 
     property var skillList: []
+    
+    MsmApp {id: launchinstaller }
 
     function getSkillByName(skillName){
         var tempSN=[];

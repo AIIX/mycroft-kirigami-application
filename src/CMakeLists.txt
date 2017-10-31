@@ -4,6 +4,7 @@ qt5_add_resources(mycroft_kirigami_application_SRCS qml.qrc)
 add_executable(mycroft-kirigami-application ${mycroft_kirigami_application_SRCS}
     main.cpp
     mycroftinterface_dbus.cpp
+    msmapp.cpp
 )
 
 target_link_libraries(mycroft-kirigami-application 
