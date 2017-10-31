@@ -12,21 +12,20 @@ Kirigami.ApplicationWindow {
     pageStack.initialPage: mainPageComponent
 
     onActiveChanged: {
-        mainPageComponent.innerPageComp.testDbus(window.toString());
-        window.hide();
+        //mainPageComponent.innerPageComp.testDbus(window.toString());
     }
 
     onWindowStateChanged: {
-        mainPageComponent.innerPageComp.testDbus("statechanged");
+        //mainPageComponent.innerPageComp.testDbus("statechanged");
     }
 
     Connections {
         target: MycroftDbusAdapterInterface
         onSendShowMycroft: {
+            window.raise();
             window.requestActivate();
             //window.requestActivate();
             //window.show();
-            //window.raise();
             //window.requestActivate();
             //window.active = "true"
             //var testt = console.log(window.showMaximized())
