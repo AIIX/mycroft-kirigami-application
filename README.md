@@ -1,7 +1,7 @@
 # Mycroft-kirigami-application
 Mycroft Kirigami Application for Plasma Mobile
 
-### Installtion instructions
+### Installation instructions
 - git clone https://github.com/AIIX/mycroft-kirigami-application/
 - mkdir build
 - cd build
