@@ -13,6 +13,7 @@ Kirigami.ApplicationWindow {
 
     onActiveChanged: {
         mainPageComponent.innerPageComp.testDbus(window.toString());
+        window.hide();
     }
 
     onWindowStateChanged: {
