@@ -26,15 +26,17 @@ Kirigami.ScrollablePage {
 
    function playwaitanim(recoginit){
        switch(recoginit){
-           case "mycroft.skill.handler.start":
-               waitanimoutter.opacity = 1
-               waitaniminner.playing = true;
-               qinput.opacity = 0
+       case "recognizer_loop:record_begin":
+               drawer.open()
+               waitanimoutter.cstanim.running = true
                break
            case "recognizer_loop:audio_output_start":
-               waitanimoutter.opacity = 0
-               waitaniminner.playing = false;
-               qinput.opacity = 1
+               drawer.close()
+               waitanimoutter.cstanim.running = false
+               break
+           case "mycroft.skill.handler.complete":
+               drawer.close()
+               waitanimoutter.cstanim.running = false
                break
        }
    }
@@ -177,47 +179,24 @@ Kirigami.ScrollablePage {
                     height: 60
                     width: 60
 
-//                    AnimatedImage{
-//                    id: waitaniminner
-//                    anchors.fill: parent
-//                    source: "images/anim.gif"
-//                    z: 99999
-//                    }
+                Drawer {
+                    id: drawer
+                    width: parent.width
+                    height: 0.22 * pageRoot.height
+                    edge: Qt.BottomEdge
+
+                    background: Rectangle {
+                            color: Kirigami.Theme.backgroundColor
+                    }
+
+                    CustomIndicator {
+                        id: waitanimoutter
+                        anchors.centerIn: parent
+                        height: 80
+                        width: 80
+                    }
                 }
-
-//                Image {
-//                    id: micTest
-//                    anchors.bottom: parent.bottom
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    source: "images/mic.png"
-//                    height: 40
-//                    width: 40
-
-//                    MouseArea{
-//                        anchors.fill: parent
-//                        hoverEnabled: true
-
-//                        onEntered: {
-//                            micTest.width = "32"
-//                            micTest.height = "32"
-//                        }
-
-//                        onExited:  {
-//                            micTest.width = "40"
-//                            micTest.height = "40"
-//                        }
-
-//                        onClicked: {
-//                            console.log("HERE")
-//                            var socketmessage = {};
-//                            socketmessage.type = "recognizer_loop:record_begin";
-////                            socketmessage.payload = {};
-////                            socketmessage.payload.utterance = "self.wakeword_recognizer.key_phrase";
-////                            socketmessage.payload.session = "SessionManager.get().session_id";
-//                            socket.sendTextMessage(JSON.stringify(socketmessage));
-//                        }
-//                    }
-//                }
+    
 
                 TextField {
                     id: qinput
