@@ -16,6 +16,8 @@ Kirigami.ScrollablePage {
    property var smintent
    property var dataContent
    property alias cbwidth: pageRoot.width
+   property alias autoCompModel: completionItems
+   property alias textInput: qinput
 
    function testDbus(getState){
        convoLmodel.append({
@@ -38,6 +40,22 @@ Kirigami.ScrollablePage {
                drawer.close()
                waitanimoutter.cstanim.running = false
                break
+       }
+   }
+   
+    function autoAppend(model, getinputstring, setinputstring) {
+        for(var i = 0; i < model.count; ++i)
+            if (getinputstring(model.get(i))){
+                console.log(model.get(i))
+                    return true
+            }
+          return null
+        }
+
+   function evalAutoLogic() {
+       if (suggestionsBox.currentIndex === -1) {
+       } else {
+           suggestionsBox.complete(suggestionsBox.currentItem)
        }
    }
 
@@ -196,11 +214,9 @@ Kirigami.ScrollablePage {
                         width: 80
                     }
                 }
-    
 
                 TextField {
                     id: qinput
-                    //height: 60
                     anchors.bottom: parent.bottom
                     anchors.left: parent.left
                     anchors.leftMargin: 90
@@ -208,6 +224,11 @@ Kirigami.ScrollablePage {
                     anchors.rightMargin: 90
                     placeholderText: qsTr("Enter Query or Say 'Hey Mycroft'")
                     onAccepted: {
+                        var doesExist = autoAppend(autoCompModel, function(item) { return item.name === qinput.text }, qinput.text)
+                        var evaluateExist = doesExist
+                        if(evaluateExist === null){
+                                    autoCompModel.append({"name": qinput.text});
+                        }
                         var socketmessage = {};
                         socketmessage.type = "recognizer_loop:utterance";
                         socketmessage.data = {};
@@ -218,8 +239,28 @@ Kirigami.ScrollablePage {
                             "InputQuery": qinput.text
                         })
                            inputlistView.positionViewAtEnd();
-
-                                             }
+                                }
+                                
+                    onTextChanged: {
+                        evalAutoLogic();
+                    }
                                                  }
-                                                   }
+                                                 
+             AutocompleteBox {
+                    id: suggestionsBox
+                    model: completionItems
+                    width: qinput.width
+                    anchors.bottom: qinput.top
+                    anchors.left: qinput.left
+                    anchors.right: qinput.right
+                    filter: textInput.text
+                    property: "name"
+                    onItemSelected: complete(item)
+
+                    function complete(item) {
+                        if (item !== undefined)
+                            textInput.text = item.name
+                        }
+                }
+        }
 }
