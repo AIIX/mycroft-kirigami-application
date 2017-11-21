@@ -37,3 +37,5 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+install( DIRECTORY mycroft DESTINATION /etc )
