@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 2.8.12)
 set(QT_MIN_VERSION "5.9.0")
 set(KF5_MIN_VERSION "5.10.0")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(AUTORCC_OPTIONS "/src/qml.qrc")
 
 find_package(ECM REQUIRED NO_MODULE)
 

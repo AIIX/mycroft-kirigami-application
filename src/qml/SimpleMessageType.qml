@@ -12,11 +12,18 @@ Column {
                         
                     Row {
                         id: messageRow
-                        spacing: 6
+                        spacing: 3
+                        
+                    Image {
+                        id: repImg
+                        width: 48
+                        height: 48
+                        source: "../images/mycroftsmaller2.png"
+                    }
                             
                     Rectangle {
                         id: messageRect
-                        width: cbwidth
+                        width: cbwidth - Kirigami.Units.gridUnit * 2
                         radius: 2
                         height: messageText.implicitHeight + 24
                         color: Qt.lighter(Kirigami.Theme.backgroundColor, 1.2)
@@ -26,7 +33,7 @@ Column {
                         text: model.InputQuery
                         anchors.fill: parent
                         anchors.margins: 12
-                        wrapMode: Label.WrapAnywhere
+                        wrapMode: Label.Wrap
                         color: Kirigami.Theme.textColor
                         
                         }

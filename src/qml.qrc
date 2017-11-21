@@ -7,49 +7,56 @@
         <file>qml/CurrentWeatherType.qml</file>
         <file>qml/SkillsView.qml</file>
         <file>qml/SkillModel.qml</file>
-        <file>qml/images/10.jpg</file>
-        <file>qml/images/activitydebug.png</file>
-        <file>qml/images/alarm.png</file>
-        <file>qml/images/appicon.png</file>
-        <file>qml/images/background.png</file>
-        <file>qml/images/bluebg.png</file>
-        <file>qml/images/bluesky.png</file>
-        <file>qml/images/climatesc.jpg</file>
-        <file>qml/images/Column_Dawid_voorkant.jpg</file>
-        <file>qml/images/dateandtime.png</file>
-        <file>qml/images/depositphotos_40095205-stock-video-broadcast-news-intro-opening-earth.jpg</file>
-        <file>qml/images/desktop.png</file>
-        <file>qml/images/funnyface.png</file>
-        <file>qml/images/hint.svg</file>
-        <file>qml/images/home.svg</file>
-        <file>qml/images/installer.svg</file>
-        <file>qml/images/joke.png</file>
-        <file>qml/images/mleftanim.png</file>
-        <file>qml/images/mleftmidanim.png</file>
-        <file>qml/images/mleftsmallanim.png</file>
-        <file>qml/images/mmidanim.png</file>
-        <file>qml/images/mycicon.png</file>
-        <file>qml/images/Mycroft-Logo-square.png</file>
-        <file>qml/images/mycroft-plasma-appicon.png</file>
-        <file>qml/images/mycroft-plasma-appicon.svg</file>
-        <file>qml/images/oldmmidanim.png</file>
-        <file>qml/images/reminder.png</file>
-        <file>qml/images/settings-icon.png</file>
-        <file>qml/images/settings.svg</file>
-        <file>qml/images/silence.png</file>
-        <file>qml/images/spell.png</file>
-        <file>qml/images/stocks.png</file>
-        <file>qml/images/trayicon.png</file>
-        <file>qml/images/view-fullscreen.svg</file>
-        <file>qml/images/weather.png</file>
-        <file>qml/images/weathericon.png</file>
-        <file>qml/images/whitespace.jpg</file>
-        <file>qml/images/wikip.png</file>
-        <file>qml/images/wolfram.png</file>
+        <file>qml/AutocompleteBox.qml</file>
+        <file>qml/CustomIndicator.qml</file>
+        <file>qml/LoaderType.qml</file>
+        <file>qml/Logic.qml</file>
+        <file>images/10.jpg</file>
+        <file>images/activitydebug.png</file>
+        <file>images/alarm.png</file>
+        <file>images/appicon.png</file>
+        <file>images/background.png</file>
+        <file>images/bluebg.png</file>
+        <file>images/bluesky.png</file>
+        <file>images/climatesc.jpg</file>
+        <file>images/Column_Dawid_voorkant.jpg</file>
+        <file>images/dateandtime.png</file>
+        <file>images/depositphotos_40095205-stock-video-broadcast-news-intro-opening-earth.jpg</file>
+        <file>images/desktop.png</file>
+        <file>images/funnyface.png</file>
+        <file>images/hint.svg</file>
+        <file>images/home.svg</file>
+        <file>images/installer.svg</file>
+        <file>images/joke.png</file>
+        <file>images/mleftanim.png</file>
+        <file>images/mleftmidanim.png</file>
+        <file>images/midanim.png</file>
+        <file>images/mleftsmallanim.png</file>
+        <file>images/mmidanim.png</file>
+        <file>images/mycroftsmaller2.png</file>
+        <file>images/mycicon.png</file>
+        <file>images/Mycroft-Logo-square.png</file>
+        <file>images/mycroft-plasma-appicon.png</file>
+        <file>images/mycroft-plasma-appicon.svg</file>
+        <file>images/oldmmidanim.png</file>
+        <file>images/reminder.png</file>
+        <file>images/settings-icon.png</file>
+        <file>images/settings.svg</file>
+        <file>images/silence.png</file>
+        <file>images/spell.png</file>
+        <file>images/stocks.png</file>
+        <file>images/trayicon.png</file>
+        <file>images/view-fullscreen.svg</file>
+        <file>images/weather.png</file>
+        <file>images/weathericon.png</file>
+        <file>images/whitespace.jpg</file>
+        <file>images/wikip.png</file>
+        <file>images/wolfram.png</file>
         <file>main.cpp</file>
         <file>qml/MainPage.qml</file>
         <file>qml/SkillDelegate.qml</file>
         <file>qml/InstallerView.qml</file>
         <file>qml/InstallerDelegate.qml</file>
+        <file>qml/AskMessageType.qml</file>
     </qresource>
 </RCC>

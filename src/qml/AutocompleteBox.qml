@@ -58,19 +58,19 @@ Rectangle {
                 
                 Image {
                     id : smallIconV
-                    source: "images/mycroftsmaller2.png"
+                    source: "../images/mycroftsmaller2.png"
                     width: Kirigami.Units.gridUnit * 2
                     height: Kirigami.Units.gridUnit * 2
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: parent.left
-                    anchors.leftMargin: Kirigami.Units.gridUnit * 0.35
+                    anchors.leftMargin: Kirigami.Units.gridUnit * 0.25
                 }
-
+                
                 PlasmaCore.SvgItem {
                         id: innerDelegateRectDividerLine
                         anchors {
                             left: smallIconV.right
-                            leftMargin: Kirigami.Units.gridUnit * 0.35
+                            leftMargin: Kirigami.Units.gridUnit * 0.30
                             top: parent.top
                             topMargin: 0
                             bottom: parent.bottom
@@ -84,8 +84,8 @@ Rectangle {
                     id: lineitemdividerSvg;
                     imagePath: "widgets/line"
                     }
-                }
-
+                }  
+                
                 Text {
                     id: textComponent
                     anchors.left: innerDelegateRectDividerLine.right
@@ -103,8 +103,8 @@ Rectangle {
                 hoverEnabled: true
                 onClicked: container.itemSelected(delegateItem.suggestion)
                     }
-                    
-                PlasmaCore.SvgItem {
+                                    
+            PlasmaCore.SvgItem {
                     anchors {
                         left: parent.left
                         right: parent.right
@@ -120,6 +120,7 @@ Rectangle {
                         imagePath: "widgets/line"
                         }
                     } 
+                    
                 }
              }
            }

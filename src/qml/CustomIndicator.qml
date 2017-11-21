@@ -43,7 +43,7 @@ BusyIndicator{
 
                  Image {
                      id: innerPulser
-                     source: "images/midanim.png"
+                     source: "../images/midanim.png"
                      anchors.centerIn: parent
                      height: 80
                      width: 80

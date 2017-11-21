@@ -110,8 +110,8 @@ Kirigami.ScrollablePage {
 
                                   if (msgType === "recognizer_loop:utterance") {
                                       var intpost = somestring.data.utterances;
-                                      //qinput.text = intpost.toString()
-                                      //midbarAnim.wsistalking()
+                                      qinput.text = intpost.toString()
+                                     convoLmodel.append({"itemType": "AskType", "InputQuery": intpost.toString()})
                                   }
 
                                   if (somestring && somestring.data && typeof somestring.data.intent_type !== 'undefined'){
@@ -181,7 +181,8 @@ Kirigami.ScrollablePage {
                                        case "WebViewType": return "WebViewType.qml"
                                        case "CurrentWeather": return "CurrentWeatherType.qml"
                                        case "DropImg" : return "ImgRecogType.qml"
-                                       case "LoaderType" : return "LoaderType.qml"    
+                                       case "LoaderType" : return "LoaderType.qml"
+                                       case "AskType" : return "AskMessageType.qml"
                                        }
                                 property var metacontent : dataContent
                                }
@@ -199,14 +200,10 @@ Kirigami.ScrollablePage {
                 anchors.right: parent.right
                 height:60
                 color: Kirigami.Theme.backgroundColor
-
-                Image {
-                    id: waitanimoutter
-                    anchors.bottom: parent.bottom
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    opacity: 0
-                    height: 60
-                    width: 60
+                
+                ListModel {
+                    id: completionItems
+                }
 
                 Drawer {
                     id: drawer
@@ -218,12 +215,12 @@ Kirigami.ScrollablePage {
                             color: Kirigami.Theme.backgroundColor
                     }
 
-                    CustomIndicator {
-                        id: waitanimoutter
-                        anchors.centerIn: parent
-                        height: 80
-                        width: 80
-                    }
+                     CustomIndicator {
+                         id: waitanimoutter
+                         anchors.centerIn: parent
+                         height: 80
+                         width: 80
+                     }
                 }
 
                 TextField {
@@ -245,11 +242,7 @@ Kirigami.ScrollablePage {
                         socketmessage.data = {};
                         socketmessage.data.utterances = [qinput.text];
                         socket.sendTextMessage(JSON.stringify(socketmessage));
-                        convoLmodel.append({
-                            "itemType": "NonVisual",
-                            "InputQuery": qinput.text
-                        })
-                           inputlistView.positionViewAtEnd();
+                        inputlistView.positionViewAtEnd();
                                 }
                                 
                     onTextChanged: {
@@ -257,21 +250,21 @@ Kirigami.ScrollablePage {
                         }
                     }
                                                  
-             AutocompleteBox {
-                    id: suggestionsBox
-                    model: completionItems
-                    width: qinput.width
-                    anchors.bottom: qinput.top
-                    anchors.left: qinput.left
-                    anchors.right: qinput.right
-                    filter: textInput.text
-                    property: "name"
-                    onItemSelected: complete(item)
-
-                    function complete(item) {
-                        if (item !== undefined)
-                            textInput.text = item.name
-                        }
-                }
+              AutocompleteBox {
+                     id: suggestionsBox
+                     model: completionItems
+                     width: qinput.width
+                     anchors.bottom: qinput.top
+                     anchors.left: qinput.left
+                     anchors.right: qinput.right
+                     filter: textInput.text
+                     property: "name"
+                     onItemSelected: complete(item)
+ 
+                     function complete(item) {
+                         if (item !== undefined)
+                             textInput.text = item.name
+                         }
+                     }
+            }
         }
-}
