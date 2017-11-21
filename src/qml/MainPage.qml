@@ -87,6 +87,11 @@ Kirigami.ScrollablePage {
                   convoLmodel.append({"itemType": "WebViewType", "InputQuery": metadata.url})
               }
           }
+          
+              function filtervisualObj(metadata){
+                convoLmodel.append({"itemType": "LoaderType", "InputQuery": metadata.url})
+                inputlistView.positionViewAtEnd();
+          }
 
           function clearList() {
                   inputlistView.clear()
@@ -118,10 +123,15 @@ Kirigami.ScrollablePage {
                                       filterSpeak(somestring.data.utterance);
                                   }
 
-                                  if(somestring && somestring.data && typeof somestring.data.desktop !== 'undefined') {
+                                  if(somestring && somestring.data && typeof somestring.data.desktop !== 'undefined' && somestring.type === "data") {
                                       dataContent = somestring.data.desktop
                                       filterincoming(smintent, dataContent)
                                   }
+                                  
+                                  if(somestring && somestring.data && typeof somestring.data.desktop !== 'undefined' && somestring.type == "visualObject") {
+                                    dataContent = somestring.data.desktop
+                                    filtervisualObj(dataContent)
+                                    }
 
                                   //midbarAnim.wsistalking()
                   }
@@ -171,6 +181,7 @@ Kirigami.ScrollablePage {
                                        case "WebViewType": return "WebViewType.qml"
                                        case "CurrentWeather": return "CurrentWeatherType.qml"
                                        case "DropImg" : return "ImgRecogType.qml"
+                                       case "LoaderType" : return "LoaderType.qml"    
                                        }
                                 property var metacontent : dataContent
                                }
@@ -243,8 +254,8 @@ Kirigami.ScrollablePage {
                                 
                     onTextChanged: {
                         evalAutoLogic();
+                        }
                     }
-                                                 }
                                                  
              AutocompleteBox {
                     id: suggestionsBox

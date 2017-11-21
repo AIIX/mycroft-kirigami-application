@@ -24,11 +24,6 @@ Kirigami.ApplicationWindow {
         onSendShowMycroft: {
             window.raise();
             window.requestActivate();
-            //window.requestActivate();
-            //window.show();
-            //window.requestActivate();
-            //window.active = "true"
-            //var testt = console.log(window.showMaximized())
         }
     }
 
