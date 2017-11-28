@@ -4,6 +4,7 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import Qt.WebSockets 1.0
 import org.kde.kirigami 2.1 as Kirigami
+import QtGraphicalEffects 1.0 
 
 Kirigami.ScrollablePage {
    id: pageRoot
@@ -25,6 +26,21 @@ Kirigami.ScrollablePage {
            "InputQuery": getState
        })
    }
+   
+    function toggleInputMethod(selection){
+        switch(selection){
+        case "KeyboardSetActive":
+            qinput.visible = true
+            customMicIndicator.visible = false
+            keybindic.color = "green"
+            break
+        case "KeyboardSetDisable":
+            qinput.visible = false
+            customMicIndicator.visible = true
+            keybindic.color = Kirigami.Theme.textColor
+            break
+        }
+   } 
 
    function playwaitanim(recoginit){
        switch(recoginit){
@@ -222,6 +238,81 @@ Kirigami.ScrollablePage {
                          width: 80
                      }
                 }
+                
+                CustomMicIndicator {
+                    id: customMicIndicator
+                    anchors.centerIn: parent
+                    anchors.bottomMargin: 22
+
+                    MouseArea{
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onEntered: {
+                            customMicIndicator.inCircle = Qt.lighter(Kirigami.Theme.linkColor, 1.2)
+                        }
+                        onExited: {
+                            customMicIndicator.inCircle = "lightblue"
+                        }
+                        onClicked: {
+                            var socketmessage = {};
+                            socketmessage.type = "mycroft.mic.listen";
+                            socketmessage.data = {};
+                            socketmessage.data.utterances = [];
+                            socket.sendTextMessage(JSON.stringify(socketmessage));
+                        }
+                     }
+                   }
+                
+                Rectangle {
+                    id: keyboardactivaterect
+                    color: Kirigami.Theme.backgroundColor
+                    border.width: 1
+                    border.color: Qt.lighter(Kirigami.Theme.backgroundColor, 1.2)
+                    width: Kirigami.Units.gridUnit * 2
+                    height: qinput.height
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    anchors.leftMargin: Kirigami.Units.gridUnit * 2.5
+
+                    Image {
+                        id: keybdImg
+                        source: "../images/keyboard.png"
+                        anchors.centerIn: parent
+                        width: 32
+                        height: 32
+                    }
+
+                    ColorOverlay {
+                        anchors.fill: keybdImg
+                        source: keybdImg
+                        color: Kirigami.Theme.textColor
+                    }
+
+                    Rectangle {
+                        id: keybindic
+                        anchors.top: keybdImg.bottom
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.leftMargin: 8
+                        anchors.rightMargin: 8
+                        height: 2
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onEntered: {}
+                        onExited: {}
+                        onClicked: {
+                            if(qinput.visible === false){
+                                toggleInputMethod("KeyboardSetActive")
+                                }
+                            else if(qinput.visible === true){
+                                toggleInputMethod("KeyboardSetDisable")
+                                }
+                            }
+                        }
+                    }
 
                 TextField {
                     id: qinput
@@ -230,6 +321,7 @@ Kirigami.ScrollablePage {
                     anchors.leftMargin: 90
                     anchors.right: parent.right
                     anchors.rightMargin: 90
+                    visible: false
                     placeholderText: qsTr("Enter Query or Say 'Hey Mycroft'")
                     onAccepted: {
                         var doesExist = autoAppend(autoCompModel, function(item) { return item.name === qinput.text }, qinput.text)

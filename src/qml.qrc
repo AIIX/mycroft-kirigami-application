@@ -28,8 +28,10 @@
         <file>images/home.svg</file>
         <file>images/installer.svg</file>
         <file>images/joke.png</file>
+        <file>images/keyboard.png</file>
         <file>images/mleftanim.png</file>
         <file>images/mleftmidanim.png</file>
+        <file>images/mic.png</file>
         <file>images/midanim.png</file>
         <file>images/mleftsmallanim.png</file>
         <file>images/mmidanim.png</file>
@@ -58,5 +60,6 @@
         <file>qml/InstallerView.qml</file>
         <file>qml/InstallerDelegate.qml</file>
         <file>qml/AskMessageType.qml</file>
+        <file>qml/CustomMicIndicator.qml</file>
     </qresource>
 </RCC>
