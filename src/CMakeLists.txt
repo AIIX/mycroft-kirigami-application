@@ -7,6 +7,14 @@ add_executable(mycroft-kirigami-application ${mycroft_kirigami_application_SRCS}
     msmapp.cpp
 )
 
+if (CMAKE_SYSTEM_NAME STREQUAL "Android")
+    set(mycroft_app_EXTRA_LIBS 
+        Qt5::AndroidExtras
+        Qt5::QuickControls2
+        Qt5::WebSockets
+    )
+endif()
+
 target_link_libraries(mycroft-kirigami-application 
     Qt5::Quick
     Qt5::Gui 
@@ -14,6 +22,7 @@ target_link_libraries(mycroft-kirigami-application
     Qt5::Qml
     Qt5::DBus
     KF5::I18n
+    ${mycroft_app_EXTRA_LIBS}
 )
 
 install(TARGETS mycroft-kirigami-application ${INSTALL_TARGETS_DEFAULT_ARGS})
