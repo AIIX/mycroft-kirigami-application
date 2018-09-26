@@ -68,12 +68,6 @@ Kirigami.ScrollablePage {
           return null
         }
 
-   function evalAutoLogic() {
-       if (suggestionsBox.currentIndex === -1) {
-       } else {
-           suggestionsBox.complete(suggestionsBox.currentItem)
-       }
-   }
 
    function filterSpeak(msg){
               convoLmodel.append({
@@ -342,21 +336,5 @@ Kirigami.ScrollablePage {
                         }
                     }
                                                  
-              AutocompleteBox {
-                     id: suggestionsBox
-                     model: completionItems
-                     width: qinput.width
-                     anchors.bottom: qinput.top
-                     anchors.left: qinput.left
-                     anchors.right: qinput.right
-                     filter: textInput.text
-                     property: "name"
-                     onItemSelected: complete(item)
- 
-                     function complete(item) {
-                         if (item !== undefined)
-                             textInput.text = item.name
-                         }
-                     }
             }
         }
