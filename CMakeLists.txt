@@ -31,7 +31,6 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
 if(CMAKE_SYSTEM_NAME STREQUAL "Android")
     find_package(Qt5AndroidExtras ${QT_MIN_VERSION} REQUIRED)
     find_package(Qt5WebSockets ${QT_MIN_VERSION} REQUIRED)
-    find_package(Qt5Webkit ${QT_MIN_VERSION} REQUIRED)
 endif()
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
