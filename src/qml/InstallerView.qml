@@ -3,7 +3,7 @@ import QtQuick.Window 2.3
 import QtQml.Models 2.3
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
-import Qt.WebSockets 1.0
+import QtWebSockets 1.0
 import org.kde.kirigami 2.1 as Kirigami
 import MsmInstaller 1.0
 
